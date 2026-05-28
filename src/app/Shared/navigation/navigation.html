@@ -1,1 +1,132 @@
-<p>navigation works!</p>
+<header class="site-header" [class.site-header--scrolled]="isScrolled()">
+
+  <div class="logo-bar">
+    <a class="logo" routerLink="/" (click)="closeMenu()">
+      <span class="logo__emblem" aria-hidden="true">⬡</span>
+      <div class="logo__text">
+        <span class="logo__name">Shoye's Banana Bread</span>
+        <span class="logo__tagline">Artisan · Handcrafted · Fresh Daily</span>
+      </div>
+      <span class="logo__emblem logo__emblem--right" aria-hidden="true">⬡</span>
+    </a>
+  </div>
+ 
+
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+ 
+      <ul class="navbar__links" role="list">
+        @for (link of navLinks; track link.label) {
+          <li
+            class="navbar__item"
+            [class.navbar__item--has-dropdown]="link.dropdown"
+            (mouseenter)="link.dropdown ? openDropdown(link.label) : null"
+            (mouseleave)="link.dropdown ? closeDropdown() : null"
+          >
+            @if (link.dropdown) {
+              <button
+                class="navbar__link"
+                [class.navbar__link--active]="isDropdownOpen(link.label)"
+                [attr.aria-expanded]="isDropdownOpen(link.label)"
+                (click)="toggleDropdown(link.label)"
+              >
+                {{ link.label }}
+                <svg class="navbar__chevron" [class.navbar__chevron--open]="isDropdownOpen(link.label)"
+                  width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                  <path d="M2 3.5L5.5 7L9 3.5" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+ 
+              <div class="dropdown" [class.dropdown--open]="isDropdownOpen(link.label)" role="menu">
+                <div class="dropdown__grid">
+                  @for (item of link.dropdown; track item.label) {
+                    <a class="dropdown__item" [routerLink]="item.route" role="menuitem" (click)="closeDropdown()">
+                      <span class="dropdown__icon" aria-hidden="true">{{ item.icon }}</span>
+                      <div class="dropdown__content">
+                        <span class="dropdown__label">{{ item.label }}</span>
+                        <span class="dropdown__desc">{{ item.description }}</span>
+                      </div>
+                    </a>
+                  }
+                </div>
+                <div class="dropdown__footer">
+                  <a class="dropdown__footer-link" [routerLink]="link.route" (click)="closeDropdown()">
+                    View all {{ link.label | lowercase }} →
+                  </a>
+                </div>
+              </div>
+ 
+            } @else {
+              <a
+                class="navbar__link"
+                [routerLink]="link.route"
+                routerLinkActive="navbar__link--current"
+                [routerLinkActiveOptions]="{ exact: link.route === '/' }"
+              >
+                {{ link.label }}
+              </a>
+            }
+          </li>
+        }
+      </ul>
+ 
+      <a class="navbar__cta" routerLink="/order" (click)="closeMenu()">
+        Order Online
+      </a>
+ 
+
+      <button
+        class="navbar__hamburger"
+        [class.navbar__hamburger--open]="isMenuOpen()"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+ 
+
+  <div class="mobile-menu" [class.mobile-menu--open]="isMenuOpen()" role="dialog" aria-label="Mobile navigation">
+    <ul role="list">
+      @for (link of navLinks; track link.label) {
+        <li>
+          @if (link.dropdown) {
+            <button class="mobile-menu__link mobile-menu__link--parent"
+              (click)="toggleDropdown(link.label)"
+              [attr.aria-expanded]="isDropdownOpen(link.label)">
+              {{ link.label }}
+              <svg class="navbar__chevron" [class.navbar__chevron--open]="isDropdownOpen(link.label)"
+                width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                <path d="M2 3.5L5.5 7L9 3.5" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-submenu" [class.mobile-submenu--open]="isDropdownOpen(link.label)">
+              @for (item of link.dropdown; track item.label) {
+                <a class="mobile-submenu__link" [routerLink]="item.route" (click)="closeMenu()">
+                  <span aria-hidden="true">{{ item.icon }}</span> {{ item.label }}
+                </a>
+              }
+            </div>
+          } @else {
+            <a class="mobile-menu__link" [routerLink]="link.route" (click)="closeMenu()"
+              routerLinkActive="mobile-menu__link--current"
+              [routerLinkActiveOptions]="{ exact: link.route === '/' }">
+              {{ link.label }}
+            </a>
+          }
+        </li>
+      }
+    </ul>
+    <a class="navbar__cta navbar__cta--mobile" routerLink="/order" (click)="closeMenu()">
+      Order Online
+    </a>
+  </div>
+ 
+</header>
+ 
