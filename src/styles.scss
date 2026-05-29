@@ -19,14 +19,6 @@ html {
   );
 }
 
-:root {
-  --navbar-height: 70px; 
-}
-
-router-outlet + * {
-  display: block;
-  padding-top: var(--navbar-height);
-}
 
 body {
   // Default the application to a light color theme. This can be changed to
