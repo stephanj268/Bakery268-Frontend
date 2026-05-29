@@ -1,0 +1,643 @@
+$emerald: #1a5c3a;
+$emerald-dark: #0f3d26;
+$emerald-light: #2a7a50;
+$emerald-pale: #e8f4ee;
+$gold: #c9a84c;
+$gold-light: #e2c47a;
+$gold-pale: #faf4e6;
+$cream: #fdf8f0;
+$text-dark: #1a1a1a;
+$text-mid: #4a4a4a;
+$text-light: #888;
+ 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+ 
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+@mixin eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: $gold;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+ 
+@mixin section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  line-height: 1.15;
+  color: $emerald-dark;
+  margin-bottom: 1.5rem;
+ 
+  em {
+    font-style: italic;
+    color: $gold;
+  }
+}
+ 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+ 
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50%       { transform: scaleY(0.6); opacity: 0.4; }
+}
+ 
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+ 
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+ 
+  &.reveal-delay-1 { transition-delay: 0.15s; }
+  &.reveal-delay-2 { transition-delay: 0.3s; }
+  &.reveal-delay-3 { transition-delay: 0.45s; }
+}
+ 
+.section {
+  padding: 6rem 2rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+ 
+.section-eyebrow { @include eyebrow; }
+ 
+.section-title { @include section-title; }
+ 
+.gold-rule {
+  width: 50px;
+  height: 1px;
+  background: $gold;
+  margin-bottom: 1.8rem;
+}
+ 
+.section-body {
+  font-size: 1.02rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: $text-mid;
+  max-width: 600px;
+}
+ 
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 680px;
+  overflow: hidden;
+  @include flex-center;
+}
+ 
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #2d4a35;
+  transform: scale(1.04);
+  will-change: transform;
+ 
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(15, 61, 38, 0.72) 0%,
+      rgba(15, 61, 38, 0.45) 50%,
+      rgba(201, 168, 76, 0.18) 100%
+    );
+  }
+}
+ 
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 780px;
+}
+ 
+.hero-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  font-size: 0.8rem;
+  color: $gold-light;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.3s forwards;
+}
+ 
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.55s forwards;
+ 
+  em {
+    font-style: italic;
+    color: $gold-light;
+  }
+}
+ 
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: $gold;
+  margin: 1.6rem auto;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.8s forwards;
+}
+ 
+.hero-sub {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  margin-bottom: 2.4rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 1s forwards;
+}
+ 
+.hero-cta {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: $emerald-dark;
+  background: $gold;
+  padding: 1rem 2.8rem;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.2s forwards;
+ 
+  &:hover {
+    background: $gold-light;
+    transform: translateY(-2px);
+  }
+}
+ 
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s 1.8s forwards;
+ 
+  span {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+}
+ 
+.scroll-line {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, rgba(201, 168, 76, 0.8), transparent);
+  animation: scrollPulse 2s 2s infinite;
+}
+ 
+.gallery-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 320px;
+}
+ 
+.gallery-cell {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+ 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+ 
+  &:hover img,
+  &:hover .gallery-placeholder {
+    transform: scale(1.07);
+  }
+ 
+  &:hover .gallery-overlay { opacity: 1; }
+ 
+  &:nth-child(1) .gallery-placeholder { background: $emerald; }
+  &:nth-child(2) .gallery-placeholder { background: #1e6b44; }
+  &:nth-child(3) .gallery-placeholder { background: #16513b; }
+  &:nth-child(4) .gallery-placeholder { background: #226040; }
+}
+ 
+.gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  @include flex-center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  transition: transform 0.6s ease;
+}
+ 
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 61, 38, 0.55), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+ 
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+ 
+.product-card {
+  background: #fff;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  cursor: pointer;
+ 
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 48px rgba(15, 61, 38, 0.1);
+ 
+    .product-img-wrap img { transform: scale(1.06); }
+  }
+}
+ 
+.product-img-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+ 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+    display: block;
+  }
+}
+ 
+.product-placeholder {
+  width: 100%;
+  height: 100%;
+  @include flex-center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: $emerald;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  min-height: 240px;
+ 
+  .product-card:nth-child(1) & { background: $emerald-pale; }
+  .product-card:nth-child(2) & { background: #e0efe8; }
+  .product-card:nth-child(3) & { background: #faf4e6; }
+}
+ 
+.product-info {
+  padding: 1.4rem 1.6rem 1.8rem;
+}
+ 
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: $emerald-dark;
+  margin-bottom: 0.4rem;
+}
+ 
+.product-desc {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: $text-mid;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+ 
+.product-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold;
+  border: 1px solid $gold-light;
+  padding: 4px 10px;
+}
+ 
+.feature-banner {
+  background: $emerald-dark;
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+ 
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(201, 168, 76, 0.05);
+    pointer-events: none;
+  }
+ 
+  .section-eyebrow { color: $gold-light; }
+ 
+  .section-title {
+    color: #fff;
+    margin-bottom: 0;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+ 
+    em { color: $gold-light; }
+  }
+}
+ 
+.feature-banner-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+}
+ 
+.banner-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.45rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  margin-top: 1.8rem;
+  padding: 0 2rem;
+  border-left: 2px solid $gold;
+  text-align: left;
+}
+ 
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+ 
+.about-image-frame {
+  position: relative;
+}
+ 
+.about-img-main {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+}
+ 
+.about-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: $emerald;
+  @include flex-center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+ 
+.about-accent-box {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  width: 160px;
+  height: 160px;
+  background: $gold-pale;
+  border: 1px solid $gold-light;
+  @include flex-center;
+  flex-direction: column;
+  gap: 4px;
+  z-index: -1;
+ 
+  .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: $emerald;
+    line-height: 1;
+  }
+ 
+  .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $gold;
+  }
+}
+ 
+.about-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+ 
+.pillar {
+  padding: 1.4rem 1.2rem;
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-top: 2px solid $gold;
+  background: $gold-pale;
+}
+ 
+.pillar-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: $emerald-dark;
+  margin-bottom: 0.4rem;
+}
+ 
+.pillar-text {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: $text-mid;
+  line-height: 1.6;
+}
+ 
+.contact-section {
+  background: $gold-pale;
+  border-top: 1px solid rgba(201, 168, 76, 0.2);
+}
+ 
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+ 
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+ 
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+ 
+  label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $text-mid;
+    font-weight: 400;
+  }
+ 
+  input,
+  textarea {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+    background: transparent;
+    padding: 0.7rem 0;
+    outline: none;
+    color: $text-dark;
+    transition: border-color 0.3s;
+    resize: none;
+    width: 100%;
+ 
+    &:focus {
+      border-bottom-color: $gold;
+    }
+  }
+ 
+  textarea {
+    min-height: 100px;
+  }
+}
+ 
+.field-error {
+  font-size: 0.75rem;
+  color: #c0392b;
+  margin-top: 2px;
+}
+ 
+.submit-btn {
+  align-self: flex-start;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #fff;
+  background: $emerald;
+  border: none;
+  padding: 0.95rem 2.4rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-top: 0.4rem;
+ 
+  &:hover {
+    background: $emerald-light;
+    transform: translateY(-2px);
+  }
+}
+ 
+.contact-info {
+  margin-top: 2rem;
+}
+ 
+.contact-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+ 
+  &:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+ 
+.contact-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: $gold;
+}
+ 
+.contact-value {
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: $text-dark;
+}
+ 
+@media (max-width: 900px) {
+  .about-wrap,
+  .contact-wrap {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+ 
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-strip { height: 220px; }
+  .about-accent-box { display: none; }
+}
+ 
+@media (max-width: 600px) {
+  .gallery-strip {
+    grid-template-columns: 1fr 1fr;
+    height: 300px;
+  }
+ 
+  .products-grid { grid-template-columns: 1fr; }
+  .about-pillars { grid-template-columns: 1fr; }
+ 
+  .hero-title { font-size: 3rem; }
+}

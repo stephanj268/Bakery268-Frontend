@@ -1,0 +1,194 @@
+<app-navigation></app-navigation>
+<section class="hero" id="home">
+  <div
+    class="hero-bg"
+    [style.transform]="heroBgTransform"
+    [style.backgroundImage]="heroBgImage"
+  ></div>
+ 
+  <div class="hero-content">
+    <p class="hero-eyebrow">Handcrafted with Love &nbsp;·&nbsp; Antigua</p>
+    <h1 class="hero-title">Shoye's<br /><em>Banana Bread</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      Lovingly baked from scratch, every loaf is a warm embrace<br />
+      of the finest ingredients and generations of care.
+    </p>
+    <a href="#products" class="hero-cta" (click)="scrollTo($event, 'products')">
+      Explore Our Breads
+    </a>
+  </div>
+ 
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+ 
+
+<div class="gallery-strip">
+  @for (img of galleryImages; track $index) {
+    <div class="gallery-cell">
+      @if (img) {
+        <img [src]="img" [alt]="'Gallery image ' + ($index + 1)" />
+      } @else {
+        <div class="gallery-placeholder">your photo here</div>
+      }
+      <div class="gallery-overlay"></div>
+    </div>
+  }
+</div>
+ 
+
+<div id="products">
+  <div class="section">
+ 
+    <div
+      class="reveal"
+      [class.visible]="isVisible('products-header')"
+      data-reveal-id="products-header"
+    >
+      <p class="section-eyebrow">Our Bakes</p>
+      <h2 class="section-title">Crafted <em>for every</em><br />occasion</h2>
+      <div class="gold-rule"></div>
+      <p class="section-body">
+        Each loaf is baked fresh to order — moist, fragrant, and made with
+        real ripe bananas and the finest pantry staples. No preservatives, no shortcuts.
+      </p>
+    </div>
+ 
+    <div class="products-grid">
+      @for (product of products; track product.name; let i = $index) {
+        <div
+          class="product-card reveal"
+          [class.visible]="isVisible('product-' + i)"
+          [attr.data-reveal-id]="'product-' + i"
+        >
+          <div class="product-img-wrap">
+            @if (product.image) {
+              <img [src]="product.image" [alt]="product.name" />
+            } @else {
+              <div class="product-placeholder">your photo here</div>
+            }
+          </div>
+          <div class="product-info">
+            <p class="product-name">{{ product.name }}</p>
+            <p class="product-desc">{{ product.description }}</p>
+            <span class="product-tag">{{ product.tag }}</span>
+          </div>
+        </div>
+      }
+    </div>
+ 
+  </div>
+</div>
+ 
+
+<div class="feature-banner">
+  <div class="feature-banner-inner">
+    <p
+      class="section-eyebrow reveal"
+      [class.visible]="isVisible('banner-eyebrow')"
+      data-reveal-id="banner-eyebrow"
+    >Our Promise</p>
+ 
+    <h2
+      class="section-title reveal"
+      [class.visible]="isVisible('banner-title')"
+      data-reveal-id="banner-title"
+    >
+      Baked with <em>nothing but</em><br />the finest ingredients
+    </h2>
+ 
+    <blockquote
+      class="banner-quote reveal"
+      [class.visible]="isVisible('banner-quote')"
+      data-reveal-id="banner-quote"
+    >
+      "Every loaf leaving our kitchen carries the same care we'd give
+      to something made for family — because to us, that's exactly what it is."
+    </blockquote>
+  </div>
+</div>
+ 
+
+<div id="about">
+  <div class="section">
+    <div class="about-wrap">
+ 
+      <div
+        class="about-image-frame reveal"
+        [class.visible]="isVisible('about-image')"
+        data-reveal-id="about-image"
+      >
+        @if (aboutImage) {
+          <img [src]="aboutImage" alt="About Shoye's Banana Bread" class="about-img-main" />
+        } @else {
+          <div class="about-placeholder">your photo here</div>
+        }
+        <div class="about-accent-box">
+          <span class="num">100%</span>
+          <span class="label">Handmade</span>
+        </div>
+      </div>
+ 
+      <div
+        class="about-text reveal"
+        [class.visible]="isVisible('about-text')"
+        data-reveal-id="about-text"
+      >
+        <p class="section-eyebrow">About Us</p>
+        <h2 class="section-title">Where <em>craft</em> meets<br />every crumb</h2>
+        <div class="gold-rule"></div>
+        <p class="section-body">
+          Shoye's Banana Bread was born from a simple belief: that the best food is
+          made slowly, intentionally, and with real ingredients you can name.
+          We source ripe, fragrant bananas and pair them with quality butter,
+          free-range eggs, and unrefined sugars to create loaves that are as
+          nourishing as they are indulgent.
+          <br /><br />
+          Every batch is mixed and baked by hand in small quantities —
+          so what arrives at your door is always fresh, always consistent,
+          and always made with the same quiet pride that started it all.
+        </p>
+ 
+        <div class="about-pillars">
+          @for (pillar of pillars; track pillar.title) {
+            <div class="pillar">
+              <p class="pillar-title">{{ pillar.title }}</p>
+              <p class="pillar-text">{{ pillar.text }}</p>
+            </div>
+          }
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+<div id="contact" class="contact-section">
+  <div class="section">
+    <div
+      class="reveal"
+      [class.visible]="isVisible('contact-info')"
+      data-reveal-id="contact-info"
+    >
+      <p class="section-eyebrow">Get in Touch</p>
+      <h2 class="section-title">Place an order<br />or <em>say hello</em></h2>
+      <div class="gold-rule"></div>
+      <p class="section-body">
+        Whether you're ordering for yourself, a gift, or a special occasion —
+        we'd love to hear from you. Reach us through any of the channels below.
+      </p>
+ 
+      <div class="contact-details-grid">
+        @for (detail of contactDetails; track detail.label) {
+          <div class="contact-detail">
+            <span class="contact-label">{{ detail.label }}</span>
+            <span class="contact-value">{{ detail.value }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

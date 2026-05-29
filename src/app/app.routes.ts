@@ -1,8 +1,11 @@
 import { Routes } from '@angular/router';
-import { FormComponent } from './Shared/form/form';
-import { App } from './app';
+import { HomeComponent } from './Views/home/home';
+import {AboutComponent} from './Views/about/about';
+import { ContactComponent } from "./Views/contact/contact";
 
 export const routes: Routes = [
-    {path: '', component: App},
-    { path: 'form', component: FormComponent },
+    {path: '', component: HomeComponent},
+    {path: 'home', component: HomeComponent},
+    {path: 'about', component: AboutComponent},
+    {path: 'contact', component: ContactComponent}
 ];
