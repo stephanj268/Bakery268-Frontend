@@ -2,6 +2,8 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
  
 export interface DropdownItem {
   label: string;
@@ -19,7 +21,14 @@ export interface NavLink {
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule, 
+    RouterModule, 
+    RouterLink,
+    RouterLinkActive
+  ],
+
+
   templateUrl: './navigation.html',
   styleUrl: './navigation.scss',
 })
@@ -29,24 +38,24 @@ export class NavigationComponent {
   activeDropdown = signal<string | null>(null);
  
   navLinks: NavLink[] = [
-    { label: 'Home', route: '/' },
+    { label: 'Home', route: '' },
     {
       label: 'Menu',
       route: '/menu',
       dropdown: [
-        { label: 'Banana Bread', description: 'Sourdough, rye, ciabatta & more', route: '/menu/breads', icon: '🍞' },
-        { label: 'Pastries', description: 'Croissants, danishes & tarts', route: '/menu/pastries', icon: '🥐' },
-        { label: 'Cakes', description: 'Celebration & everyday cakes', route: '/menu/cakes', icon: '🎂' },
-        { label: 'Seasonal Specials', description: 'Limited edition creations', route: '/menu/seasonal', icon: '✨' },
+        { label: 'Banana Bread', description: 'Carrot Dream, Nutty Dynasty & more', route: '/menu/breads', icon: '' },
+        { label: 'Cookies', description: 'Classic and innovative flavors', route: '/menu/pastries', icon: '' },
+        { label: 'Cakes', description: 'Cheesecake, chocolate & more', route: '/menu/cakes', icon: '' },
+        { label: 'Seasonal Specials', description: 'Limited edition creations', route: '/menu/seasonal', icon: '' },
       ],
     },
     {
       label: 'Custom Orders',
       route: '/custom-orders',
       dropdown: [
-        { label: 'Wedding Cakes', description: 'Bespoke tiers for your big day', route: '/custom-orders/wedding', icon: '💍' },
-        { label: 'Birthday Cakes', description: 'Personalised celebration cakes', route: '/custom-orders/birthday', icon: '🎉' },
-        { label: 'Corporate Catering', description: 'Bulk orders for events', route: '/custom-orders/corporate', icon: '🏢' },
+        { label: 'Cakes', description: 'Bespoke tiers for your big day', route: '/custom-orders/cakes', icon: '' },
+        { label: 'Cakes', description: 'Personalised celebration cakes', route: '/custom-orders/cakes', icon: '' },
+        { label: 'Catering', description: 'Bulk orders for events', route: '/custom-orders/catering', icon: '' },
       ],
     },
     { label: 'About', route: '/about' },

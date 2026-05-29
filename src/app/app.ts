@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavigationComponent } from './Shared/navigation/navigation';
+import { Footer } from "./Shared/footer/footer";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavigationComponent],
+  imports: [RouterOutlet, Footer],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
