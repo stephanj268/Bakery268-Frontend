@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500&display=swap');
+
+// ── Variables ──────────────────────────────────────────────
+$emerald:       #0D4A35;
+$emerald-dark:  #092E20;
+$emerald-mid:   #1A6B4D;
+$emerald-light: #E8F3EE;
+$gold:          #C9A84C;
+$gold-light:    #E8C96A;
+$gold-pale:     #FBF5E6;
+$ivory:         #FDFAF4;
+$border-gold:   rgba(201, 168, 76, 0.30);
+$border-em:     rgba(13, 74, 53, 0.15);
+
+$font-display:  'Cormorant Garamond', Georgia, serif;
+$font-body:     'Jost', sans-serif;
+$transition:    0.22s cubic-bezier(0.4, 0, 0.2, 1);
+
+// ── Host ───────────────────────────────────────────────────
+:host {
+  display: block;
+  background: $ivory;
+  font-family: $font-body;
+  color: $emerald-dark;
+}
+
+// ── Store Hero ─────────────────────────────────────────────
+.store-hero {
+  background: $emerald-dark;
+  padding: 56px 2rem 48px;
+  text-align: center;
+  border-bottom: 1px solid $border-gold;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(201, 168, 76, 0.03) 40px,
+      rgba(201, 168, 76, 0.03) 41px
+    );
+  }
+
+  &__eyebrow {
+    font-family: $font-body;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: $gold;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 600;
+    color: $ivory;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    position: relative;
+
+    em {
+      font-style: italic;
+      color: $gold-light;
+    }
+  }
+
+  &__sub {
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(253, 250, 244, 0.55);
+    letter-spacing: 0.06em;
+    margin-top: 14px;
+    position: relative;
+  }
+}
+
+// ── Filters ────────────────────────────────────────────────
+.filters {
+  background: $emerald;
+  border-bottom: 1px solid $border-gold;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.filter-btn {
+  font-family: $font-body;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(253, 250, 244, 0.65);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 16px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color $transition, border-color $transition;
+
+  &:hover { color: $gold-light; }
+
+  &.active {
+    color: $gold-light;
+    border-bottom-color: $gold;
+  }
+}
+
+// ── Store Layout ───────────────────────────────────────────
+.store-layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 2rem 80px;
+}
+
+// ── Section Heading ────────────────────────────────────────
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  &__title {
+    font-family: $font-display;
+    font-size: 32px;
+    font-weight: 600;
+    color: $emerald-dark;
+    letter-spacing: 0.02em;
+  }
+
+  &__line {
+    flex: 1;
+    height: 1px;
+    background: $border-gold;
+  }
+
+  &__count {
+    font-family: $font-body;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: rgba(13, 74, 53, 0.45);
+    text-transform: uppercase;
+  }
+}
+
+// ── Promo Banner ───────────────────────────────────────────
+.promo-banner {
+  background: $gold-pale;
+  border: 1px solid $border-gold;
+  border-radius: 2px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__icon { font-size: 32px; }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 20px;
+    font-weight: 600;
+    color: $emerald-dark;
+  }
+
+  &__sub {
+    font-family: $font-body;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(13, 74, 53, 0.60);
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+  }
+}
+
+.btn-promo {
+  background: $emerald;
+  color: $ivory;
+  font-family: $font-body;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background $transition;
+  white-space: nowrap;
+
+  &:hover { background: $emerald-mid; }
+}
+
+// ── Featured Cards ─────────────────────────────────────────
+.featured-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 48px;
+
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featured-card {
+  background: $emerald-dark;
+  border: 1px solid $border-gold;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform $transition, box-shadow $transition;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(9, 46, 32, 0.22);
+  }
+
+  &__img {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    background: $emerald-mid;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(9, 46, 32, 0.6) 100%);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: $gold;
+    color: $emerald-dark;
+    font-family: $font-body;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 1px;
+    z-index: 1;
+  }
+
+  &__body {
+    padding: 20px 24px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-size: 26px;
+    font-weight: 600;
+    color: $ivory;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  &__desc {
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(253, 250, 244, 0.60);
+    line-height: 1.6;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
+
+  &__price {
+    font-family: $font-display;
+    font-size: 22px;
+    font-weight: 600;
+    color: $gold;
+    letter-spacing: 0.04em;
+  }
+}
+
+// ── Buttons ────────────────────────────────────────────────
+.btn-add {
+  background: $gold;
+  color: $emerald-dark;
+  font-family: $font-body;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background $transition, transform $transition;
+
+  &:hover { background: $gold-light; transform: translateY(-1px); }
+  &:active { transform: translateY(0); }
+}
+
+.btn-add-sm {
+  background: $emerald;
+  color: $ivory;
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background $transition, transform $transition;
+
+  &:hover { background: $emerald-mid; transform: translateY(-1px); }
+}
+
+// ── Products Grid ──────────────────────────────────────────
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  background: $ivory;
+  border: 1px solid $border-em;
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform $transition, box-shadow $transition, border-color $transition;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(13, 74, 53, 0.12);
+    border-color: $border-gold;
+  }
+
+  &__img {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    background: $emerald-light;
+    position: relative;
+  }
+
+  &__tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: $emerald;
+    color: $gold;
+    font-family: $font-body;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 1px;
+  }
+
+  &__body {
+    padding: 16px 18px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-size: 20px;
+    font-weight: 600;
+    color: $emerald-dark;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+
+  &__desc {
+    font-family: $font-body;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: rgba(13, 74, 53, 0.60);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid $border-em;
+  }
+
+  &__price {
+    font-family: $font-display;
+    font-size: 20px;
+    font-weight: 600;
+    color: $emerald;
+    letter-spacing: 0.04em;
+  }
+}
+
+// ── Cart Toast ─────────────────────────────────────────────
+.cart-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: $emerald-dark;
+  border: 1px solid $border-gold;
+  color: $ivory;
+  font-family: $font-body;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 14px 20px;
+  border-radius: 2px;
+  box-shadow: 0 8px 32px rgba(9, 46, 32, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+  z-index: 999;
+  pointer-events: none;
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &__icon { font-size: 16px; }
+
+  &__name {
+    color: $gold-light;
+    font-family: $font-display;
+    font-size: 15px;
+    font-style: italic;
+  }
+}

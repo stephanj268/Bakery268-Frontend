@@ -1,1 +1,74 @@
-<p>store works!</p>
+<div class="store-hero">
+    <p class="store-hero__eyebrow">Our Pastry Collection</p>
+    <h1 class="store-hero__title">Baked with <em>love</em>,<br>served fresh daily</h1>
+    <p class="store-hero__sub">Every item handcrafted in small batches — order before 10am for same-day pickup</p>
+</div>
+
+<!-- Filters -->
+<!-- <div class="filters">
+  <button class="filter-btn active" (click)="filterProducts('all', $event)">All Items</button>
+  <button class="filter-btn" (click)="filterProducts('featured', $event)">Featured</button>
+  <button class="filter-btn" (click)="filterProducts('croissants', $event)">Croissants</button>
+  <button class="filter-btn" (click)="filterProducts('cakes', $event)">Cakes &amp; Tarts</button>
+  <button class="filter-btn" (click)="filterProducts('breads', $event)">Breads</button>
+  <button class="filter-btn" (click)="filterProducts('seasonal', $event)">Seasonal</button>
+</div> -->
+
+<!-- Store Layout -->
+<div class="store-layout">
+
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        <div class="promo-banner__left">
+            <span class="promo-banner__icon">🎁</span>
+            <div>
+                <div class="promo-banner__title">Free delivery on orders over $40</div>
+                <div class="promo-banner__sub">Use code FRESHBAKED at checkout · Valid this week only</div>
+            </div>
+        </div>
+        <button class="btn-promo">Shop Now</button>
+    </div>
+
+    <!-- Featured Section -->
+    <div class="section-heading">
+        <h2 class="section-heading__title">Chef's Picks</h2>
+        <div class="section-heading__line"></div>
+        <span class="section-heading__count">2 items</span>
+    </div>
+
+    <!-- All Products -->
+    <div class="section-heading">
+        <h2 class="section-heading__title">Full Menu</h2>
+        <div class="section-heading__line"></div>
+        <!-- <span class="section-heading__count">{{ visibleCount }} item{{ visibleCount !== 1 ? 's' : '' }}</span> -->
+    </div>
+
+    <div class="products-grid">
+
+
+        @for (item of pastries; track pastries) {
+        <div class="product-card">
+            <div class="product-card__img">
+
+                <!-- <span class="product-card__tag">{{ item.tag }}</span> -->
+            </div>
+            <div class="product-card__body">
+                <div class="product-card__name">{{ item.name }}</div>
+                <!-- <div class="product-card__desc">{{ item.description }}</div> -->
+                <div class="product-card__footer">
+                    <span class="product-card__price">${{ item.price.toFixed(2) }}</span>
+                    <button class="btn-add-sm">Add</button>
+                </div>
+            </div>
+        </div>
+
+        }
+
+    </div>
+</div>
+
+<!-- Cart Toast -->
+<!-- <div class="cart-toast" [class.show]="toastVisible">
+  <span class="cart-toast__icon">🛒</span>
+  <span>Added <span class="cart-toast__name">{{ toastName }}</span> to your order</span>
+</div> -->

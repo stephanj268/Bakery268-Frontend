@@ -49,6 +49,7 @@ export class NavigationComponent {
         { label: 'Seasonal Specials', description: 'Limited edition creations', route: '/menu/seasonal', icon: '' },
       ],
     },
+    
     {
       label: 'Custom Orders',
       route: '/custom-orders',
