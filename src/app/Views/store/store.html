@@ -1,5 +1,5 @@
-<app-navigation></app-navigation>
 
+<app-navigation></app-navigation>
 
 <div class="store-hero">
     <p class="store-hero__eyebrow">Our Pastry Collection</p>
@@ -8,14 +8,14 @@
 </div>
 
 <!-- Filters -->
-<!-- <div class="filters">
+<div class="filters">
   <button class="filter-btn active" (click)="filterProducts('all', $event)">All Items</button>
   <button class="filter-btn" (click)="filterProducts('featured', $event)">Featured</button>
   <button class="filter-btn" (click)="filterProducts('croissants', $event)">Croissants</button>
   <button class="filter-btn" (click)="filterProducts('cakes', $event)">Cakes &amp; Tarts</button>
   <button class="filter-btn" (click)="filterProducts('breads', $event)">Breads</button>
   <button class="filter-btn" (click)="filterProducts('seasonal', $event)">Seasonal</button>
-</div> -->
+</div>
 
 <!-- Store Layout -->
 <div class="store-layout">
@@ -49,7 +49,7 @@
     <div class="products-grid">
 
 
-        @for (item of pastries; track pastries) {
+        @for (item of pastries; track item) {
         <div class="product-card">
             <div class="product-card__img">
 

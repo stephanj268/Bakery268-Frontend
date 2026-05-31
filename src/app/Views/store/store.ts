@@ -4,7 +4,6 @@ import { ProductService } from '../../Service/Product/product.service';
 
 
 
-import { db_URL, PORT } from "../../../environment";
 @Component({
   selector: 'app-store',
   imports: [NavigationComponent],
@@ -20,13 +19,14 @@ export class StoreComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.productservice.get().subscribe( (data) => {
-      console.log(data);
+    this.productservice.get().subscribe((data) => {
       this.pastries = data;
+      console.log(this.pastries);
     })
   }
 
+  filterProducts(product: string, event: any) {
 
+  }
 
-  
 }
