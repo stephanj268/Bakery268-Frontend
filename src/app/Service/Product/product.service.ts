@@ -4,7 +4,7 @@ import { db_URL, PORT } from "../../../environment";
 
 @Injectable()
 export class ProductService {
-    dbName: string = 'product'
+    dbName: string = 'product';
 
     constructor(private http: HttpClient){}
 
@@ -14,12 +14,11 @@ export class ProductService {
             'Content-Type': 'application/json'
         });
 
-        return this.http.post
+        // return this.http.post
         
     }
 
     get(){
-
         const httpHeaders = new HttpHeaders({
             'Content-Type': 'application/json'
         });

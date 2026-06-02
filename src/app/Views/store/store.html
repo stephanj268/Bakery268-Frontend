@@ -1,4 +1,3 @@
-
 <app-navigation></app-navigation>
 
 <div class="store-hero">
@@ -9,12 +8,12 @@
 
 <!-- Filters -->
 <div class="filters">
-  <button class="filter-btn active" (click)="filterProducts('all', $event)">All Items</button>
-  <button class="filter-btn" (click)="filterProducts('featured', $event)">Featured</button>
-  <button class="filter-btn" (click)="filterProducts('croissants', $event)">Croissants</button>
-  <button class="filter-btn" (click)="filterProducts('cakes', $event)">Cakes &amp; Tarts</button>
-  <button class="filter-btn" (click)="filterProducts('breads', $event)">Breads</button>
-  <button class="filter-btn" (click)="filterProducts('seasonal', $event)">Seasonal</button>
+    <button class="filter-btn active" (click)="filterProducts('all', $event)">All Items</button>
+    <button class="filter-btn" (click)="filterProducts('featured', $event)">Featured</button>
+    <button class="filter-btn" (click)="filterProducts('croissants', $event)">Croissants</button>
+    <button class="filter-btn" (click)="filterProducts('cakes', $event)">Cakes &amp; Tarts</button>
+    <button class="filter-btn" (click)="filterProducts('breads', $event)">Breads</button>
+    <button class="filter-btn" (click)="filterProducts('seasonal', $event)">Seasonal</button>
 </div>
 
 <!-- Store Layout -->
@@ -33,11 +32,11 @@
     </div>
 
     <!-- Featured Section -->
-    <div class="section-heading">
+    <!-- <div class="section-heading">
         <h2 class="section-heading__title">Chef's Picks</h2>
         <div class="section-heading__line"></div>
         <span class="section-heading__count">2 items</span>
-    </div>
+    </div> -->
 
     <!-- All Products -->
     <div class="section-heading">
@@ -47,6 +46,20 @@
     </div>
 
     <div class="products-grid">
+
+        <div class="product-card">
+            <div class="product-card__img">
+
+                <!-- <span class="product-card__tag">{{ item.tag }}</span> -->
+            </div>
+            <div class="product-card__body">
+                <div class="product-card__name">Custom Order</div>
+                <div class="product-card__desc">Build your own pastry!</div>
+                <div class="product-card__footer">
+                    <button class="btn-add-sm" (click)="navToForm()">Go</button>
+                </div>
+            </div>
+        </div>
 
 
         @for (item of pastries; track item) {

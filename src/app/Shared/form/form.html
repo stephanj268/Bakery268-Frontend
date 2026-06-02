@@ -1,1 +1,95 @@
-<p>form works!</p>
+<app-navigation></app-navigation>
+
+
+<div class="form-wrap">
+
+    <div class="brand-header">
+        <h1>SHOYE'S BANANA BREAD</h1>
+        <p>ARTISAN &middot; HANDCRAFTED &middot; FRESH DAILY</p>
+    </div>
+
+    <p class="section-label">Your details</p>
+    <div class="row">
+        <div class="field">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="e.g. Maria" />
+        </div>
+        <div class="field">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" placeholder="e.g. James" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" placeholder="+1 268 ..." />
+        </div>
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="example@email.com" />
+        </div>
+    </div>
+
+    <p class="section-label">Choose your items</p>
+    <div class="product-grid" id="product-grid"></div>
+
+    @for (item of product; track item) {
+    <div class="product-card">
+        <!-- <div class="picon">${{item.icon}}</div> -->
+        <div class="pname">{{item.name}}</div>
+        <div class="pprice">{{item.price.toFixed(2)}}</div>
+        <div class="pdesc">{{item.description}}</div>
+        <div class="qty-row">
+            <button class="qty-btn">−</button>
+            <span class="qty-val">0</span>
+            <button class="qty-btn">+</button>
+        </div>
+    </div>
+    }
+
+
+
+    <p class="section-label">Delivery</p>
+    <div class="row">
+        <div class="field">
+            <label for="delivery">Delivery method</label>
+            <select id="delivery">
+                <option value="pickup">Pickup</option>
+                <option value="delivery">Local delivery (+$3.00)</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="date">Preferred date</label>
+            <input type="date" id="date" />
+        </div>
+    </div>
+    <div class="field" id="addr-field">
+        <label for="address">Delivery address</label>
+        <input type="text" id="address" placeholder="Street, St. John's, Antigua" />
+    </div>
+
+    <div class="field">
+        <label for="notes">Special instructions</label>
+        <textarea id="notes" placeholder="Allergies, custom decorations, gift messages..."></textarea>
+    </div>
+
+    <p class="section-label">Order summary</p>
+    <div class="summary-card">
+        <div id="summary-lines">
+            <p class="empty-msg">No items selected yet.</p>
+        </div>
+        <div id="summary-total" style="display:none">
+            <hr class="summary-divider" />
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="total-val"></span>
+            </div>
+        </div>
+    </div>
+
+    <button class="submit-btn" id="submit-btn">Place order</button>
+    <div class="success-msg" id="success-msg">
+        ✅ Order placed! We'll confirm via WhatsApp or email shortly. 🍌
+    </div>
+
+</div>

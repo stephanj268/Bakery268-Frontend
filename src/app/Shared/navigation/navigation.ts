@@ -1,7 +1,7 @@
 
 import { Component, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
  
@@ -33,6 +33,10 @@ export interface NavLink {
   styleUrl: './navigation.scss',
 })
 export class NavigationComponent {
+
+  constructor(private router: Router) {
+
+  }
   isMenuOpen = signal(false);
   isScrolled = signal(false);
   activeDropdown = signal<string | null>(null);
@@ -48,17 +52,20 @@ export class NavigationComponent {
         { label: 'Cakes', description: 'Cheesecake, chocolate & more', route: '/menu/cakes', icon: '' },
         { label: 'Seasonal Specials', description: 'Limited edition creations', route: '/menu/seasonal', icon: '' },
       ],
+
     },
     
-    {
-      label: 'Custom Orders',
-      route: '/custom-orders',
-      dropdown: [
-        { label: 'Cakes', description: 'Bespoke tiers for your big day', route: '/custom-orders/cakes', icon: '' },
-        { label: 'Cakes', description: 'Personalised celebration cakes', route: '/custom-orders/cakes', icon: '' },
-        { label: 'Catering', description: 'Bulk orders for events', route: '/custom-orders/catering', icon: '' },
-      ],
-    },
+    // {
+    //   label: 'Custom Orders',
+    //   route: '/custom-orders',
+    //   dropdown: [
+    //     { label: 'Cakes', description: 'Bespoke tiers for your big day', route: '/custom-orders/cakes', icon: '' },
+    //     { label: 'Birthdays', description: 'Personalised celebration cakes', route: '/custom-orders/cakes', icon: '' },
+    //     { label: 'Catering', description: 'Bulk orders for events', route: '/custom-orders/catering', icon: '' },
+    //   ],
+
+    // },
+
     { label: 'About', route: '/about' },
     { label: 'Contact', route: '/contact' },
   ];
@@ -76,6 +83,8 @@ export class NavigationComponent {
   closeMenu(): void {
     this.isMenuOpen.set(false);
     this.activeDropdown.set(null);
+
+    this.router.navigateByUrl('order')
   }
  
   openDropdown(label: string): void {
