@@ -15,7 +15,6 @@ export const routes: Routes = [
     {path: 'contact', component: ContactComponent},
 
     {path: 'menu', component: StoreComponent},
-    {path: 'order', component: OrderComponent},
     {path: 'build', component: FormComponent},
 
     {path: '**', component: HomeComponent}
